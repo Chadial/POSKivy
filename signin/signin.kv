@@ -1,0 +1,105 @@
+<FlatButton@ButtonBehavior+Label>
+    # Customized Label widget inheriting from ButtonBehaviour Class
+    font_size:              16
+
+<SigninWindow>:
+    # root.widget
+    id:                     main_win
+    # ID and Kivy-variable name of this widget
+    orientation:            "vertical"
+    # Alignment direction of all Widget inside this widget
+    spacing:                10
+    # distance in pixels between widget
+    space_x:                self.size[0]/3
+    # distance from left boundary
+    canvas.before:
+        # Purpose to change the background color of whole root.widget
+        Color:
+            rgba:           (1, 1, 1, 1)    # Colors from 0 to 1, red, green, blue, alpha
+        Rectangle:
+            size:           self.size
+            pos:            self.pos
+
+
+    BoxLayout:
+        size_hint_y:        None
+        # No relative (ratio) of widget height to main widget height
+        height:             50
+        # Absolute Pixel height of widget
+        canvas.before:
+            # Drawing Class for the purpose to change the background color of whole root.widget
+            Color:
+                rgba:           (.06, .45, .45, 1)    # Colors from 0 to 1, red, green, blue, alpha
+            Rectangle:
+                # Shape of drawn Object, try RoundedRectangle
+                size:           self.size
+                pos:            self.pos
+        Label:
+            text:           "Access Control"
+            bold:           True
+            size_hint_x:    .9
+            # Ratio of widget width to main widget size
+        FlatButton:
+            text:           "x"
+            size_hint_x:    .1
+
+    BoxLayout
+        orientation:            "vertical"
+        padding:                main_win.space_x, 10
+        # 1, 2 or 4 value. 1: distance to boundary, 2: distance to top&bottom, distance to left&right, 4: top, right, bottom, left distance
+        spacing:                20
+        BoxLayout:
+            orientation:        "vertical"
+            spacing:            10
+            size_hint_y:        None
+            height:             100
+            Label:
+                id:             info
+                text:           ""
+                markup:         True
+                size_hint_y:    None
+                height:         20
+            TextInput:
+                id:             username_field
+                hint_text:      "Username"
+                multiline:      False
+                focus:          True
+                # While starting the App the initial cursor is in this field
+                on_text_validate: pwd_field.focus = True
+                # Focus jumps to Widget with the id "pwd_field" (see following TextInput) after pressing return (this case)
+                write_tab:      False
+                # Disable tab as input in this file, also seems to jump to the next TextInput Widget
+            TextInput:
+                id:             pwd_field
+                hint_text:      "Password"
+                multiline:      False
+                password:       True
+                # Hide input chars as *
+                on_text_validate: root.validate_user()
+                # after enter text, call function/class "validate_user()" in Python Main-Script of Rootwidget
+                write_tab:      False
+        Label:
+            # Purpose of adding space before placing next button in BoxLayout
+            id:                 sp1
+            size_hint_y:        None
+            height:             40
+        Button:
+            text:               "Sign In"
+            size_hint_y:        None
+            height:             40
+            background_color:   (.06, .45, .45, 1)
+            background_normal:  ''
+            # Change default background image of Button to empty, because default image is grey and hues the background_color
+            on_release:         root.validate_user()
+        Label:
+            # Purpose of spacing to the bottom
+            id:                 sp2
+
+
+#self.size       -- list property of widget dimensions width (size_hint_x) and height (size_hint_y)
+#self.size[0]    == size_hint_x
+#spacing         -- distance between widgets
+#padding         -- 1, 2 or 4 value. 1: distance to boundary, 2: distance to top&bottom, distance to left&right, 4: top, right, bottom, left distance
+#id              -- like variable name of widget
+#multiline       -- controls input multiple line like "Umbruch"
+# <WidgetName@Widget> -- New Widget class inheriting from Widget class
