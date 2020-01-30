@@ -76,7 +76,6 @@ class OperatorWindow(BoxLayout):
                 preview.text = nu_preview
 
 
-
 class OperatorApp(App):
     def build(self):
         return OperatorWindow()
