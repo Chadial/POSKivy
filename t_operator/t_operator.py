@@ -6,8 +6,11 @@ https://www.youtube.com/watch?v=53Jtx3v9ZZU&list=PLW062AfleDZbWPQXjyMeLOlcL8aQ4a
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
+from kivy.lang import Builder
 
 import re
+
+Builder.load_file('t_operator/operator.kv')
 
 
 class OperatorWindow(BoxLayout):

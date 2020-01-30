@@ -5,6 +5,9 @@ https://www.youtube.com/watch?v=53Jtx3v9ZZU&list=PLW062AfleDZbWPQXjyMeLOlcL8aQ4a
 
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
+from kivy.lang import Builder
+
+Builder.load_file('signin/signin.kv')
 
 
 class SigninWindow(BoxLayout):
@@ -27,6 +30,7 @@ class SigninWindow(BoxLayout):
                 info.text = '[color=#00FF00]Logged In successfully[/color]'
             else:
                 info.text = '[color=#FF0000]Invalid Username and/ or Password[/color]'
+
 
 class SigninApp(App):
     def build(self):
