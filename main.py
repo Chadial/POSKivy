@@ -15,8 +15,9 @@ class MainWindow(BoxLayout):
         super().__init__(**kwargs)
 
         self.ids.scrn_si.add_widget(self.signin_widget)
-        #self.ids.scrn_si.add_widget(self.signin_widget)
-        #self.ids.scrn_si.add_widget(self.signin_widget)
+        self.ids.scrn_op.add_widget(self.operator_widget)
+        self.ids.scrn_admin.add_widget(self.admin_widget)
+
 
 class MainApp(App):
     def build(self):

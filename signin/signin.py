@@ -28,6 +28,7 @@ class SigninWindow(BoxLayout):
         else:
             if uname == 'admin' and passw == 'admin':
                 info.text = '[color=#00FF00]Logged In successfully[/color]'
+                self.parent.parent.current = "scrn_admin"
             else:
                 info.text = '[color=#FF0000]Invalid Username and/ or Password[/color]'
 
